@@ -3,16 +3,31 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AccountService } from '../services/account.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+  constructor(private accountService: AccountService) {}
 
-  constructor() {}
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    const currentUser = this.accountService.currentUserValue;
+    const isLoggedIn = currentUser && currentUser.Token;
+    const isApiUrl = request.url.startsWith(environment.webApi);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (isLoggedIn && isApiUrl) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: 'Bearer ${currentUser.Token}',
+        },
+      });
+    }
     return next.handle(request);
   }
 }
