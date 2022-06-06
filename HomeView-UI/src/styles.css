@@ -1,1 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  overflow-y: scroll;
+}
+
+main {
+  background-color: #ebf4f7;
+}
+
+h1 {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: #393e43;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #393e43;
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #ebf4f7;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ebf4f7;
+}
+
+h5 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #393e43;
+}
+
+p {
+  color: #393e43;
+}
+
+.container {
+  max-width: 100rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.section-container {
+  margin: 0 2.4rem 0 2.4rem;
+}
+
+.head-foot-container {
+  max-width: 100rem;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.text-section-main {
+  padding: 0 2.4rem;
+}
+
+.footer {
+  height: 8rem;
+  background-color: #033860;
+}
+
+.footer-content {
+  align-items: center;
+  max-width: 1000px;
+  height: 8rem;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 0.25fr 0.5fr 0.25fr;
+}
+
+.footer-logo-section {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+  gap: 0.8rem;
+  color: #ebf4f7;
+}
+
+.footer-logo {
+  height: 3.8rem;
+}
+
+.footer-nav-bar li {
+  list-style: none;
+}
+
+.footer-nav-bar {
+  display: flex;
+  gap: 1.2rem;
+  grid-column: 3;
+}
+
+.footer-nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav-bar li a:link,
+.footer-nav-bar li a:visited {
+  text-decoration: none;
+  color: #ebf4f7;
+  font-size: 1.2rem;
+}
+
+.footer-nav-bar li a:hover,
+.footer-nav-bar li a:active {
+  text-decoration: underline;
+}
 /* You can add global styles to this file, and also import other style files */
