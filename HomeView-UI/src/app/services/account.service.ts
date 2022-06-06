@@ -52,6 +52,12 @@ export class AccountService {
     return this.currentUserSubject$.value;
   }
 
+  public isLoggedIn() {
+    const currentUser = this.currentUserValue;
+    const isLoggedIn = currentUser && currentUser.Token;
+    return isLoggedIn;
+  }
+
   logout() {
     localStorage.removeItem('homeView-currentUser');
     this.currentUserSubject$.next(null);

@@ -1,1 +1,28 @@
-<p>navbar works!</p>
+<header class="header">
+  <div class="header-content grid--3-cols head-foot-container">
+    <a class="header-home-link" href="index.html">
+      <img class="header-logo" src="assets/logo.png" alt="HomeView Logo" />
+    </a>
+    <ul class="navigation-bar">
+      <li><a class="nav-item" href="index.html">Home</a></li>
+      <li><a class="nav-item" href="buyer.html">Buy</a></li>
+      <li><a class="nav-item" href="seller.html">Sell</a></li>
+      <li><a class="nav-item" href="help.html">Help</a></li>
+      <li><a class="nav-item" href="AboutUs.html">About Us</a></li>
+    </ul>
+    <div class="account-section">
+      <ul class="account-options">
+        <li class="nav-item" *ngIf="!accountService.isLoggedIn()">
+          <a class="account-option" routerLink='/login'>Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!accountService.isLoggedIn()">
+          <a class="account-option" routerLink='/register'>Sign Up</a>
+        </li>
+        <li class="nav-item" *ngIf="accountService.isLoggedIn()">
+          <a class="account-option" routerLink="/">{{accountService.currentUserValue.Username}}</a>
+        </li>
+      </ul>
+      <img class="avatar-pic" *ngIf="accountService.isLoggedIn()" src="img/nav-avatar.svg" />
+    </div>
+  </div>
+</header>
