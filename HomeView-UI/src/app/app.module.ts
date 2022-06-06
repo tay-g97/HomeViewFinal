@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,13 +15,10 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [HttpClient],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

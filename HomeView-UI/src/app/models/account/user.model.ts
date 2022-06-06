@@ -1,5 +1,7 @@
-export class UserCreate {
+export class User {
   constructor(
+    public UserId: number,
+    public Username: string,
     public Firstname: string,
     public Lastname: string,
     public Dateofbirth: string,
@@ -14,8 +16,7 @@ export class UserCreate {
     public Phone: string,
     public MarketingEmail: string,
     public MarketingPhone: boolean,
-    public Username: string,
-    public Password: string,
-    public profilepictureId?: number
+    public ProfilepictureId: number,
+    public Token: string
   ) {}
 }
