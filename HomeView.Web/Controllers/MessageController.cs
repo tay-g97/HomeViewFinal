@@ -100,5 +100,23 @@ namespace HomeView.Web.Controllers
             return Unauthorized("You did not receive this message");
 
         }
+
+        [Authorize]
+        [HttpPost("reply/{messageId}")]
+        public async Task<ActionResult<Message>> Reply(MessageCreate messageCreate, int messageId)
+        {
+            var replyMessage = await _messageRepository.GetAsync(messageId);
+            var receiverId = replyMessage.SenderId;
+            var replyPropertyId = replyMessage.PropertyId;
+
+            int userId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+
+            messageCreate.PropertyId = replyPropertyId;
+            var message = await _messageRepository.InsertAsync(messageCreate, userId, receiverId);
+
+            var updatedMessage = await _messageRepository.UpdateAsync(messageId, message.MessageId);
+
+            return Ok(message);
+        }
     }
 }

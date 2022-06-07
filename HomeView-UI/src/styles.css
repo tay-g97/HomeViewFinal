@@ -123,3 +123,47 @@ p {
   text-decoration: underline;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.major-btn,
+.major-btn:link,
+.major-btn:visited {
+  background-color: #087ca7;
+  color: #ebf4f7;
+}
+
+.major-btn:hover,
+.major-btn:active {
+  background-color: #2189b0;
+}
+
+.minor-btn,
+.minor-btn:link,
+.minor-btn:visited {
+  background-color: hsla(206, 94%, 19%, 0);
+  color: #393e43;
+  box-shadow: inset 0 0 0 3px #087ca7;
+}
+
+.minor-btn:hover,
+.minor-btn:active {
+  box-shadow: inset 0 0 0 3px #2189b0;
+  background-color: hsla(192, 13%, 85%, 0.466);
+}
+
+/* forms */
+
+.form-field {
+  border-radius: 5px;
+  border: none;
+  height: 3rem;
+  font-size: 1.4rem;
+  padding: 0 0.4rem 0 0.4rem;
+}
+
+.form-field-description {
+  border-radius: 5px;
+  border: none;
+  height: 3rem;
+  font-size: 1.4rem;
+  padding: 0.4rem 0.4rem 0 0.4rem;
+}

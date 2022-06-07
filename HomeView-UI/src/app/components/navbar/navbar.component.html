@@ -11,18 +11,18 @@
       <li><a class="nav-item" href="AboutUs.html">About Us</a></li>
     </ul>
     <div class="account-section">
-      <ul class="account-options">
-        <li class="nav-item" *ngIf="!accountService.isLoggedIn()">
+      <ul class="account-options" *ngIf="!accountService.isLoggedIn()">
+        <li class="nav-item">
           <a class="account-option" routerLink='/login'>Login</a>
         </li>
-        <li class="nav-item" *ngIf="!accountService.isLoggedIn()">
+        <li class="nav-item">
           <a class="account-option" routerLink='/register'>Sign Up</a>
         </li>
-        <li class="nav-item" *ngIf="accountService.isLoggedIn()">
+        <!-- <li class="nav-item" *ngIf="accountService.isLoggedIn()">
           <a class="account-option" routerLink="/">{{accountService.currentUserValue.Username}}</a>
-        </li>
+        </li> -->
       </ul>
-      <img class="avatar-pic" *ngIf="accountService.isLoggedIn()" src="img/nav-avatar.svg" />
+      <img class="avatar-pic" src="img/nav-avatar.svg" />
     </div>
   </div>
 </header>
