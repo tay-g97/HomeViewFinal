@@ -17,6 +17,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
+import { CarouselModule} from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
+    ProfilePhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
+    CarouselModule.forRoot()
   ],
   providers: [
     HttpClient,

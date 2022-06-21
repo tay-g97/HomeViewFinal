@@ -13,14 +13,16 @@ import { environment } from 'src/environments/environment';
 export class AccountService {
   private currentUserSubject$: BehaviorSubject<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
     this.currentUserSubject$ = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('homeView-currentUser'))
     );
   }
 
   login(model: UserLogin): Observable<User> {
-    return this.http.post('http://localhost:5000/api/Account/login', model).pipe(
+    return this.http.post(`${environment.webApi}/Account/login`, model).pipe(
       map((user: User) => {
         if (user) {
           localStorage.setItem('homeView-currentUser', JSON.stringify(user));
@@ -33,7 +35,7 @@ export class AccountService {
   }
 
   register(model: UserCreate): Observable<User> {
-    return this.http.post('${environment.webApi}/Account/register', model).pipe(
+    return this.http.post(`${environment.webApi}/Account/register`, model).pipe(
       map((user: User) => {
         if (user) {
           localStorage.setItem('homeView-currentUser', JSON.stringify(user));
@@ -55,12 +57,17 @@ export class AccountService {
 
   public isLoggedIn() {
     const currentUser = this.currentUserValue;
-    const isLoggedIn = !!currentUser && !!currentUser.Token;
+    const isLoggedIn = !!currentUser && !!currentUser.token;
     return isLoggedIn;
   }
 
   logout() {
     localStorage.removeItem('homeView-currentUser');
     this.currentUserSubject$.next(null);
+  }
+
+  updatePhoto(photoId: number) : Observable<any>{
+    const currentUser = this.currentUserValue;
+    return this.http.put(`${environment.webApi}/Account/updatepicture/${photoId}`, null, {responseType: 'text'});
   }
 }

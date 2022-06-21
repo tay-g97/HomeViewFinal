@@ -59,30 +59,47 @@ namespace HomeView.Web.Controllers
 
             if (result.Succeeded)
             {
-                User user = new User()
-                {
-                    UserId = userIdentity.UserId,
-                    Username = userIdentity.Username,
-                    Firstname = userIdentity.Firstname,
-                    Lastname = userIdentity.Lastname,
-                    Dateofbirth = userIdentity.Dateofbirth,
-                    Addressline1 = userIdentity.Addressline1,
-                    Addressline2 = userIdentity.Addressline2,
-                    Addressline3 = userIdentity.Addressline3,
-                    Town = userIdentity.Town,
-                    City = userIdentity.City,
-                    Postcode = userIdentity.Postcode,
-                    Accounttype = userIdentity.Accounttype,
-                    Email = userIdentity.Email,
-                    Phone = userIdentity.Phone,
-                    MarketingEmail = userIdentity.MarketingEmail,
-                    MarketingPhone = userIdentity.MarketingPhone,
-                    ProfilepictureId = userIdentity.ProfilepictureId,
-                    Token = _tokenService.CreateToken(userIdentity)
-                };
+                var createdUserIdentity = await _userManager.FindByNameAsync(userIdentity.Username);
 
-                return Ok(user);
-                
+                if (createdUserIdentity != null)
+                {
+                    var loginResult = await _signInManager.CheckPasswordSignInAsync(
+                        createdUserIdentity,
+                        userCreate.Password,
+                        false);
+
+                    if (loginResult.Succeeded)
+                    {
+                        User user = new User
+                        {
+                            UserId = createdUserIdentity.UserId,
+                            Username = createdUserIdentity.Username,
+                            Firstname = createdUserIdentity.Firstname,
+                            Lastname = createdUserIdentity.Lastname,
+                            Dateofbirth = createdUserIdentity.Dateofbirth,
+                            Addressline1 = createdUserIdentity.Addressline1,
+                            Addressline2 = createdUserIdentity.Addressline2,
+                            Addressline3 = createdUserIdentity.Addressline3,
+                            Town = createdUserIdentity.Town,
+                            City = createdUserIdentity.City,
+                            Postcode = createdUserIdentity.Postcode,
+                            Accounttype = createdUserIdentity.Accounttype,
+                            Email = createdUserIdentity.Email,
+                            Phone = createdUserIdentity.Phone,
+                            MarketingEmail = createdUserIdentity.MarketingEmail,
+                            MarketingPhone = createdUserIdentity.MarketingPhone,
+                            ProfilepictureId = createdUserIdentity.ProfilepictureId,
+                            Token = _tokenService.CreateToken(createdUserIdentity)
+                        };
+
+                        return Ok(user);
+
+                    }
+
+                    return BadRequest("Login failed");
+                }
+
+                return NotFound("User does not exist");
             }
 
             return BadRequest(result.Errors);

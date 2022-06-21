@@ -130,6 +130,11 @@ namespace HomeView.Web.Controllers
         public async Task<ActionResult<Message>> Reply(MessageCreate messageCreate, int messageId)
         {
             var replyMessage = await _messageRepository.GetAsync(messageId);
+
+            if (replyMessage == null)
+            {
+                return NotFound("Original message does not exist");
+            }
             var receiverId = replyMessage.SenderId;
             var replyPropertyId = replyMessage.PropertyId;
             var receiverCheckId = replyMessage.ReceiverId;

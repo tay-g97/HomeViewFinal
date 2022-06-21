@@ -22,13 +22,15 @@ namespace HomeView.Web.Controllers
         private readonly IPhotoRepository _photoRepository;
         private readonly IAccountRepository _accountRepository;
         private readonly IPhotoService _photoService;
+        private readonly IMessageRepository _messageRepository;
 
-        public PropertyController(IPropertyRepository propertyRepository, IPhotoRepository photoRepository, IAccountRepository accountRepository, IPhotoService photoService)
+        public PropertyController(IPropertyRepository propertyRepository, IPhotoRepository photoRepository, IAccountRepository accountRepository, IPhotoService photoService, IMessageRepository messageRepository)
         {
             _propertyRepository = propertyRepository;
             _photoRepository = photoRepository;
             _accountRepository = accountRepository;
             _photoService = photoService;
+            _messageRepository = messageRepository;
         }
 
         [Authorize]
@@ -68,6 +70,11 @@ namespace HomeView.Web.Controllers
                 return NotFound("User does not exist");
 
             var properties = await _propertyRepository.GetAllByIdAsync((userId));
+
+            if (properties.IsNullOrEmpty())
+            {
+                return NotFound("User has no properties");
+            }
 
             return Ok(properties);
         }
@@ -111,7 +118,11 @@ namespace HomeView.Web.Controllers
                     }
                 }
 
-                return Ok("Deleted property and all property images");
+                var affectedMessageRows = await _messageRepository.DeleteByPropertyIdAsync(propertyId);
+
+                var affectedPropertyRows = await _propertyRepository.DeleteAsync(propertyId);
+
+                return Ok("Deleted property and all property images/messages");
             }
             
             
@@ -126,11 +137,10 @@ namespace HomeView.Web.Controllers
             int userId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
             var foundProperty = await _propertyRepository.GetAsync(propertyId);
 
-            if (foundProperty.ToString().IsNullOrEmpty())
+            if (foundProperty == null)
             {
                 return NotFound("Property does not exist");
             }
-
 
             if (foundProperty.UserId == userId)
             {

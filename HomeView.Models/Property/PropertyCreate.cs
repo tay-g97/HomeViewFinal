@@ -13,6 +13,7 @@ namespace HomeView.Models.Property
         public double Guideprice { get; set; }
         [Required(ErrorMessage = "Property type is required")]
         public string Propertytype { get; set; }
+        [Required(ErrorMessage = "Description required")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Number of bedrooms is required")]
         public int Bedrooms { get; set; }

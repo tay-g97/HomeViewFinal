@@ -37,6 +37,23 @@ namespace HomeView.Repository
             return affectedRows;
         }
 
+        public async Task<int> DeleteByPropertyIdAsync(int propertyId)
+        {
+            int affectedRows = 0;
+
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                await connection.OpenAsync();
+
+                affectedRows = await connection.ExecuteAsync(
+                    "Message_DeleteByPropertyId",
+                    new { PropertyId = propertyId },
+                    commandType: CommandType.StoredProcedure);
+            }
+
+            return affectedRows;
+        }
+
         public async Task<Message> GetAsync(int messageId)
         {
             Message message;

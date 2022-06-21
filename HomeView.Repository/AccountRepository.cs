@@ -79,6 +79,24 @@ namespace HomeView.Repository
             return IdentityResult.Success;
         }
 
+        public async Task<UserIdentity> GetByIdAsync(int userId)
+        {
+
+            UserIdentity user;
+
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                await connection.OpenAsync();
+
+                user = await connection.QuerySingleOrDefaultAsync<UserIdentity>(
+                    "Account_GetById", new { UserId = userId },
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+
+            return user;
+        }
+
         public async Task<UserIdentity> GetByUsernameAsync(string normalizedUsername, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();

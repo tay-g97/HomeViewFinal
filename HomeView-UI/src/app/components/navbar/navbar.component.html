@@ -18,9 +18,14 @@
         <li class="nav-item">
           <a class="account-option" routerLink='/register'>Sign Up</a>
         </li>
-        <!-- <li class="nav-item" *ngIf="accountService.isLoggedIn()">
-          <a class="account-option" routerLink="/">{{accountService.currentUserValue.Username}}</a>
-        </li> -->
+      </ul>
+      <ul class="account-options" *ngIf="accountService.isLoggedIn()">
+        <li class="nav-item">
+          <a class="account-option" routerLink="/">{{accountService.currentUserValue.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-logout-option" (click)='logout()'>Logout</a>
+        </li>
       </ul>
       <img class="avatar-pic" src="img/nav-avatar.svg" />
     </div>

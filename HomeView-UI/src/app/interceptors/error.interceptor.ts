@@ -41,7 +41,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
         }
 
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
@@ -53,7 +53,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (!!error.error[key]) {
           const errorElement = error.error[key];
           errorMessage =
-            '${errorMessage}${errorElement.code} - ${errorElement.description}/n';
+            `${errorMessage}${errorElement.code} - ${errorElement.description}\n`;
         }
       }
       this.toastr.error(errorMessage, error.statusText);
@@ -66,7 +66,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       let errorMessage = '';
       for (const key in errorObject) {
         const errorElement = errorObject[key];
-        errorMessage = '${errorMessage}${errorElement}/n';
+        errorMessage = `${errorMessage}${errorElement}\n`;
       }
       this.toastr.error(errorMessage, error.statusCode);
       console.log(error.error);

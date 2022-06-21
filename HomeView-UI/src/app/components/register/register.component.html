@@ -1,1 +1,306 @@
-<p>register works!</p>
+<section class="section-signup-header">
+  <div class="signup-header container">
+    <h5 class="signup-header">Create An Account</h5>
+  </div>
+</section>
+<section class="section-signup">
+  <div class="container section-main-login-content">
+    <div class="create-listing-form-outer section-container">
+      <div class="create-listing-form-container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="signup-form-section-1">
+            <div class="form-group label-align first-name-field">
+              <label class="form-label" for="firstname"
+              >First Name</label>
+              <input
+              formControlName="firstname"
+              [ngClass]="{'is-invalid' : hasErrors('firstname') && isTouched('firstname'),
+                          'is-valid' : !hasErrors('firstname') && isTouched('firstname')}"
+              class="form-field form-control form-control-lg"
+              type="text"
+              placeholder="John"
+              />
+              <div *ngIf="hasError('firstname', 'minlength') || hasError('firstname', 'maxlength')" class="invalid-feedback">
+                Must be between 1-15 characters
+              </div>
+            </div>
+            <div class="form-group last-name-field label-align">
+              <label class="form-label" for="lastname">Last Name</label>
+              <input
+              formControlName="lastname"
+              [ngClass]="{'is-invalid' : hasErrors('lastname') && isTouched('lastname'),
+                          'is-valid' : !hasErrors('lastname') && isTouched('lastname')}"
+              class="form-field form-control form-control-lg"
+              type="text"
+              placeholder="Smith"
+              />
+              <div *ngIf="hasError('lastname', 'minlength') || hasError('lastname', 'maxlength')" class="invalid-feedback">
+                Must be between 1-15 characters
+              </div>
+            </div>
+            <div class="form-group dob-field label-align">
+              <label class="form-label" for="dateofbirth">Date of Birth</label>
+              <input
+                formControlName="dateofbirth"
+                [ngClass]="{'is-invalid' : hasErrors('lastname') && isTouched('lastname'),
+                            'is-valid' : !hasErrors('lastname') && isTouched('lastname')}"
+                class="form-field dob-field-input"
+                type="date"
+              />
+            </div>
+
+          </div>
+          <div class="signup-password-section">
+            <div class="form-group password-field label-align">
+              <label class="form-label" for="password">Password</label>
+              <input
+                class="form-field form-control form-control-lg"
+                type="password"
+                [ngClass]="{'is-invalid' : hasErrors('password') && isTouched('password'),
+                                'is-valid' : !hasErrors('password') && isTouched('password')}"
+                formControlName="password"
+                placeholder="Password"
+              />
+              <div *ngIf="hasError('password', 'required')" class="invalid-feedback">
+                Password is required
+              </div>
+              <div *ngIf="hasError('password', 'minlength') || hasError('password', 'maxlength')" class="invalid-feedback">
+                  Must be between 10-50 characters
+              </div>
+            </div>
+            <div class="form-group confirm-password-field label-align">
+              <label class="form-label" for="confirmPassword"
+                >Re-Type Password</label
+              >
+              <input
+                class="form-field form-control form-control-lg"
+                formControlName="confirmPassword"
+                type="password"
+                [ngClass]="{'is-invalid' : 
+                              (formHasError('isMatching') || hasErrors('confirmPassword')) 
+                              && isTouched('confirmPassword'),
+                              'is-valid' : 
+                              (!formHasError('isMatching') && !hasErrors('confirmPassword'))
+                              && isTouched('confirmPassword')}"
+              />
+              <div *ngIf="hasError('confirmPassword', 'required')" class="invalid-feedback">
+                Confirm Password is required
+              </div>
+    
+              <div *ngIf="formHasError('isMatching')" class="invalid-feedback">
+                Passwords do not match
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="form-group signup-address-section">
+            <label class="form-label left-label" for="addressline1"
+              >Address Line 1</label
+            >
+            <input
+              formControlName="addressline1"
+              [ngClass]="{'is-invalid' : hasErrors('addressline1') && isTouched('addressline1'),
+                          'is-valid' : !hasErrors('addressline1') && isTouched('addressline1')}"
+              class="form-field form-control form-control-lg"
+              type="text"
+            />
+            <div *ngIf="hasError('addressline1', 'minlength') || hasError('addressline1', 'maxlength')" class="invalid-feedback">
+              Must be between 1-30 characters
+            </div>
+            <label class="form-label left-label" for="addressline2"
+              >Address Line 2</label
+            >
+            <input
+              formControlName="addressline2"
+              class="form-field form-control form-control-lg"
+              type="text"
+            />
+            <label class="form-label left-label" for="addressline3"
+              >Address Line 3</label
+            >
+            <input
+              formControlName="addressline3"
+              class="form-field form-control form-control-lg"
+              type="text"
+            />
+            <label class="form-label right-label signup-town-label" for="town"
+              >Town</label
+            >
+            <input
+              formControlName="town"
+              class="form-field form-control form-control-lg right-field signup-town-field"
+              type="text"
+            />
+            <label class="form-label right-label signup-city-label" for="city"
+              >City</label
+            >
+            <input
+              formControlName="city"
+              class="form-field form-control form-control-lg right-field signup-city-field"
+              type="text"
+            />
+            <label
+              class="form-label right-label signup-postcode-label"
+              for="postcode"
+              >PostCode</label
+            >
+            <input
+              formControlName="postcode"
+              [ngClass]="{'is-invalid' : hasErrors('postcode') && isTouched('postcode'),
+                          'is-valid' : !hasErrors('postcode') && isTouched('postcode')}"
+              class="form-field form-control form-control-lg right-field signup-postcode-field"
+              type="text"
+              />
+              <div *ngIf="hasError('postcode', 'minlength') || hasError('postcode', 'maxlength')" class="invalid-feedback">
+                Must be between 1-10 characters
+              </div>
+            />
+          </div>
+          
+          <!-- <div class="form-group">
+            <input
+                type="text"
+                [ngClass]="{'is-invalid' : hasErrors('username') && isTouched('username'),
+                            'is-valid' : !hasErrors('username') && isTouched('username')}"
+                class="form-control form-control-lg"
+                formControlName="username"
+                placeholder="Username">
+    
+            <div *ngIf="hasError('username', 'required')" class="invalid-feedback">
+                Username is required
+            </div>
+    
+            <div *ngIf="hasError('username', 'minlength') || hasError('username', 'maxlength')" class="invalid-feedback">
+                Must be between 5-20 characters
+            </div>
+          </div> -->
+          
+          <div class="signup-account-info">
+            <div class="form-group username-field label-align">
+              <label class="form-label" for="username">Username</label>
+              <input
+                formControlName="username"
+                [ngClass]="{'is-invalid' : hasErrors('username') && isTouched('username'),
+                            'is-valid' : !hasErrors('username') && isTouched('username')}"
+                class="form-field form-control form-control-lg"
+                type="text"
+              />
+              <div *ngIf="hasError('username', 'required')" class="invalid-feedback">
+                Username is required
+              </div>
+    
+              <div *ngIf="hasError('username', 'minlength') || hasError('username', 'maxlength')" class="invalid-feedback">
+                Must be between 5-20 characters
+              </div>
+            </div>
+            <div class="form-group account-type-field label-align">
+              <label class="form-label" for="accounttype"
+                >Account Type</label
+              >
+              <select 
+              class="form-field form-control form-control-lg" 
+              formControlName="accounttype"
+              [ngClass]="{'is-invalid' : hasErrors('username') && isTouched('username'),
+                          'is-valid' : !hasErrors('username') && isTouched('username')}" >
+                <option value="">Select -</option>
+                <option value="Buyer">Buyer</option>
+                <option value="Seller">Seller</option>
+              </select>
+
+              <div *ngIf="hasError('accounttype', 'minlength') || hasError('accounttype', 'maxlength')" class="invalid-feedback">
+                Must be a valid account type
+              </div>
+            </div>
+          </div>
+          <div class="signup-contact-info">
+            <div class="form-group email-field label-align">
+              <label class="form-label" for="email">Email</label>
+              <input
+                formControlName="email"
+                class="form-field form-control form-control-lg"
+                [ngClass]="{'is-invalid' : hasErrors('email') && isTouched('email'),
+                            'is-valid' : !hasErrors('email') && isTouched('email')}"
+                type="email"
+                placeholder="Email"
+              />
+              <div *ngIf="hasError('email', 'required')" class="invalid-feedback">
+                Email is required
+              </div>
+    
+              <div *ngIf="hasError('email', 'pattern')" class="invalid-feedback">
+                Invalid email format
+              </div>  
+    
+              <div *ngIf="hasError('email', 'maxlength')" class="invalid-feedback">
+                Can be at most 30 characters
+              </div>
+            </div>
+
+
+
+
+            <div class="form-group phone-field label-align">
+              <label class="form-label" for="phone">Phone</label>
+              <input 
+              formControlName="phone" 
+              class="form-field form-control form-control-lg" 
+              type="tel" />
+            </div>
+          </div>
+          <div class="marketing-section">
+            <label class="form-label"
+              >Would you like to receive updates and newsletters from
+              us?</label
+            >
+            <div class="form-group marketing-section-email">
+              <label class="form-label" for="marketingemail"
+                >Email</label
+              >
+              <input
+                formControlName="marketingemail"
+                type="checkbox"
+                class="optional-icons-checkbox"
+              />
+            </div>
+            <div class="form-group marketing-section-phone">
+              <label class="form-label" for="marketingphone"
+                >Phone</label
+              >
+              <input
+                formControlName="marketingphone"
+                type="checkbox"
+                class="optional-icons-checkbox"
+              />
+            </div>
+          </div>
+          <div class="signup-form-bottom">
+            <div class="signup-submit-section">
+              <div class="signup-tandc-confirm">
+                <label class="form-label" for="tandc"
+                  >I agree to the
+                  <a href="#" class="site-policy-link tandclink"
+                    >Site Policy</a
+                  >
+                  and
+                  <a href="#" class="t-and-c-link tandclink"
+                    >Terms & Conditions</a
+                  ></label
+                >
+                <input
+                  id="tandc"
+                  type="checkbox"
+                  class="optional-icons-checkbox"
+                  required
+                />
+              </div>
+              <button class="create-listing-submit reply-btn options-btn" [disabled]="!registerForm.valid">
+                Sign Up!
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

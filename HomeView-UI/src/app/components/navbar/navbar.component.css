@@ -71,6 +71,13 @@
   text-decoration: underline;
 }
 
+.nav-logout-option {
+  text-decoration: none;
+  color: #ebf4f7;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 .grid--3-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

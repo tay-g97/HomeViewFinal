@@ -40,6 +40,12 @@ namespace HomeView.Web.Controllers
         public async Task<ActionResult<Photo>> UploadPhoto(IFormFile file, int propertyId)
         {
             int userId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+
+            if (file == null)
+            {
+                return BadRequest("No file uploaded");
+            }
+
             var property = await _propertyRepository.GetAsync(propertyId);
 
             if (property == null)
@@ -48,24 +54,29 @@ namespace HomeView.Web.Controllers
             }
 
             var photoList = await _photoRepository.GetAllByPropertyIdAsync(propertyId);
-            var thumbnail = HttpContext.Request.Query["thumbnail"];
+            var thumbnail = ((HttpContext.Request.Query["thumbnail"]).ToString()).ToUpper();
 
-            foreach (var item in photoList)
+            bool thumbnailResult = false;
+
+            if (thumbnail == "TRUE" || thumbnail == "FALSE")
             {
-                if (thumbnail == true && thumbnail == item.Thumbnail)
+                thumbnailResult = Convert.ToBoolean(thumbnail);
+            }
+
+            if (thumbnailResult)
+            {
+                foreach (var item in photoList)
                 {
-                    return BadRequest("This property already has a thumbnail image");
+                    if (item.Thumbnail)
+                    {
+                        return BadRequest("This property already has a thumbnail image");
+                    }
                 }
             }
 
             if (userId != property.UserId)
             {
                 return Unauthorized("You do not own this property listing");
-            }
-
-            if (thumbnail.IsNullOrEmpty())
-            {
-                thumbnail = "false";
             }
 
             var uploadResult = await _photoService.AddPhotoAsync(file);
@@ -78,7 +89,7 @@ namespace HomeView.Web.Controllers
                 ImageUrl = uploadResult.SecureUrl.AbsoluteUri,
             };
 
-            var photo = await _photoRepository.InsertAsync(photoCreate, userId, propertyId, Convert.ToBoolean(thumbnail));
+            var photo = await _photoRepository.InsertAsync(photoCreate, userId, propertyId, thumbnailResult);
 
             return Ok(photo);
         }
@@ -87,6 +98,11 @@ namespace HomeView.Web.Controllers
         public async Task<ActionResult<Photo>> Get(int photoId)
         {
             var photo = await _photoRepository.GetAsync(photoId);
+
+            if (photo == null)
+            {
+                return NotFound("Photo does not exist");
+            }
 
             return Ok(photo);
         }
