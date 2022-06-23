@@ -1,0 +1,104 @@
+.container {
+  max-width: 100rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+.section-about-us {
+  padding: 2.4rem 0;
+}
+
+/* about us page main content */
+h5 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #393e43;
+}
+.section-about-us-content {
+  padding-bottom: 2.4rem;
+  padding-top: 1.2rem;
+}
+
+.about-us-header {
+  margin-bottom: 2.4rem;
+}
+
+.about-us-house {
+  width: 24.32rem;
+  height: 16.64rem;
+  border-radius: 14px;
+  box-shadow: 0 0 4.8rem rgba(0, 0, 0, 0.1);
+}
+
+.about-us-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  row-gap: 2.4rem;
+  column-gap: 4.8rem;
+  margin-bottom: 2.4rem;
+}
+
+.about-us-house-1,
+.about-us-house-3 {
+  grid-column: 2;
+  justify-self: left;
+}
+
+.about-us-house-2 {
+  grid-column: 1;
+  grid-row: 1/-1;
+  justify-self: right;
+}
+
+.site-description {
+  letter-spacing: 0.2px;
+  margin-bottom: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #495057;
+  line-height: 1.2;
+}
+
+.about-us-socials-bar {
+  background-color: #033860;
+  display: grid;
+  grid-template-columns: 0.3fr 0.05fr 0.3fr 0.05fr 0.3fr;
+  justify-items: center;
+  align-items: center;
+  box-shadow: 0 0 4.8rem rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1.2rem 2.4rem;
+}
+
+.about-us-socials-divider-display {
+  width: 0.05rem;
+  height: 7rem;
+  background-color: #ebf4f7;
+}
+
+.about-us-socials-socials-logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+.about-us-socials-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.about-us-socials-socials-link {
+  color: rgba(3, 56, 96, 0);
+}
+
+.about-us-socials-awards {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.about-us-socials-awards-img {
+  height: 6rem;
+  border-radius: 10%;
+  align-items: center;
+}
