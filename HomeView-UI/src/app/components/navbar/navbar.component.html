@@ -31,4 +31,70 @@
       <img class="avatar-pic" [src]="photo.imageUrl" *ngIf="accountService.isLoggedIn()"/>
     </div>
   </div>
-</header>
+<!-- </header>
+ <header class="header">
+  <div class="header-content grid--3-cols head-foot-container">
+    <a class="header-home-link" href="index.html">
+      <img class="header-logo" src="assets/logo.png" alt="HomeView Logo" />
+    </a>
+    <ul class="navigation-bar">
+      <li><a class="nav-item" href="index.html">Home</a></li>
+      <li><a class="nav-item" href="buyer.html">Buy</a></li>
+      <li><a class="nav-item" href="seller.html">Sell</a></li>
+      <li class="nav-item">
+        <a class="account-option" routerLink="/help">Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="account-option" routerLink="/about-us">About Us</a>
+      </li>
+    </ul>
+  
+    <ul class="account-options" *ngIf="!accountService.isLoggedIn()">
+      <li class="nav-item">
+        <a class="account-option" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="account-option" routerLink="/register">Sign Up</a>
+      </li>
+    </ul>
+
+    <div
+      class="btn-group account-option"
+      dropdown
+      *ngIf="accountService.isLoggedIn()"
+    >
+      <button
+        id="button-animated"
+        dropdownToggle
+        type="button"
+        class="btn dropdown-toggle"
+        aria-controls="dropdown-animated"
+      >
+        Welcome {{ accountService.currentUserValue.username }}!
+      </button>
+
+      <ul
+        id="dropdown-animated"
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-animated"
+      >
+        <li role="menuitem">
+          <a class="dropdown-item" routerLink="/profile">Profile</a>
+        </li>
+
+        <li role="menuitem">
+          <a class="dropdown-item" routerLink="/create-a-listing"
+            >Create A Listing</a
+          >
+        </li>
+
+        <li role="divider dropdown-divider"></li>
+        <li role="menuitem">
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header> -->
