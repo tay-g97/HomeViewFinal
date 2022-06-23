@@ -25,7 +25,11 @@ export class PhotoService {
     return this.http.get<ProfilePhoto>(`${environment.webApi}/Profilephoto/${photoId}`);
   }
 
-  delete(photoId: number) : Observable<number>{
-    return this.http.delete<number>(`${environment.webApi}/Profilephoto/delete/${photoId}`);
+  delete(photoId: number) : Observable<any>{
+    const requestOptions: Object = {
+      /* other options here */
+      responseType: 'text'
+    }
+    return this.http.delete<any>(`${environment.webApi}/Profilephoto/delete/${photoId}`, requestOptions);
   }
 }

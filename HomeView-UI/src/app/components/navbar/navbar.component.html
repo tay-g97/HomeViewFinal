@@ -27,7 +27,8 @@
           <a class="nav-logout-option" (click)='logout()'>Logout</a>
         </li>
       </ul>
-      <img class="avatar-pic" src="img/nav-avatar.svg" />
+      <img class="avatar-pic" src="assets/nav-avatar.svg" *ngIf="!accountService.isLoggedIn()"/>
+      <img class="avatar-pic" [src]="photo.imageUrl" *ngIf="accountService.isLoggedIn()"/>
     </div>
   </div>
 </header>
