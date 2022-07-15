@@ -1,0 +1,242 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h1 class="display-4 mt-5">{{ isNew() ? "Create" : "Edit" }} Property</h1>
+  </div>
+
+  <a
+    *ngIf="!isNew()"
+    routerLink="/create-a-listing/{{
+      createAListingForm.get('propertyId').value
+    }}"
+    class="badge badge-primary mb-2 p-2"
+    >Preview House</a
+  >
+
+  <form [formGroup]="createAListingForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="propertyname">propertyname</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('propertyname') && isTouched('propertyname'),
+          'is-valid': !hasErrors('propertyname') && isTouched('propertyname')
+        }"
+        class="form-control form-control-lg"
+        formControlName="propertyname"
+        placeholder="propertyname"
+      />
+
+      <div
+        *ngIf="hasError('propertyname', 'required')"
+        class="invalid-feedback"
+      >
+        PropertyName is required
+      </div>
+
+      <div
+        *ngIf="
+          hasError('propertyname', 'minlength') ||
+          hasError('propertyname', 'maxlength')
+        "
+        class="invalid-feedback"
+      >
+        Must be less than 50 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="guideprice">guideprice</label>
+      <input
+        type="number"
+        [ngClass]="{
+          'is-invalid': hasErrors('guideprice') && isTouched('guideprice'),
+          'is-valid': !hasErrors('guideprice') && isTouched('guideprice')
+        }"
+        class="form-control form-control-lg"
+        formControlName="guideprice"
+        placeholder="guideprice"
+      />
+
+      <div *ngIf="hasError('guideprice', 'required')" class="invalid-feedback">
+        guideprice is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="propertytype">propertytype</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('propertytype') && isTouched('propertytype'),
+          'is-valid': !hasErrors('propertytype') && isTouched('propertytype')
+        }"
+        class="form-control form-control-lg"
+        formControlName="propertytype"
+        placeholder="propertytype"
+      />
+
+      <div
+        *ngIf="hasError('propertytype', 'required')"
+        class="invalid-feedback"
+      >
+        propertytype is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bathrooms">bathrooms</label>
+      <input
+        type="number"
+        [ngClass]="{
+          'is-invalid': hasErrors('bathrooms') && isTouched('bathrooms'),
+          'is-valid': !hasErrors('bathrooms') && isTouched('bathrooms')
+        }"
+        class="form-control form-control-lg"
+        formControlName="bathrooms"
+        placeholder="bathrooms"
+      />
+
+      <div *ngIf="hasError('bathrooms', 'required')" class="invalid-feedback">
+        bathrooms is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bedrooms">bedrooms</label>
+      <input
+        type="number"
+        [ngClass]="{
+          'is-invalid': hasErrors('bedrooms') && isTouched('bedrooms'),
+          'is-valid': !hasErrors('bedrooms') && isTouched('bedrooms')
+        }"
+        class="form-control form-control-lg"
+        formControlName="bedrooms"
+        placeholder="bedrooms"
+      />
+
+      <div *ngIf="hasError('bedrooms', 'required')" class="invalid-feedback">
+        bedrooms is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">description</label>
+      <textarea
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('description') && isTouched('description'),
+          'is-valid': !hasErrors('description') && isTouched('description')
+        }"
+        class="form-control form-control-lg"
+        formControlName="description"
+        placeholder="description"
+      ></textarea>
+
+      <div *ngIf="hasError('description', 'required')" class="invalid-feedback">
+        description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="addressline1">addressline1</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('addressline1') && isTouched('addressline1'),
+          'is-valid': !hasErrors('addressline1') && isTouched('addressline1')
+        }"
+        class="form-control form-control-lg"
+        formControlName="addressline1"
+        placeholder="addressline1"
+      />
+
+      <div
+        *ngIf="hasError('addressline1', 'required')"
+        class="invalid-feedback"
+      >
+        addressline1 is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="addressline2">addressline2</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('addressline2') && isTouched('addressline2'),
+          'is-valid': !hasErrors('addressline2') && isTouched('addressline2')
+        }"
+        class="form-control form-control-lg"
+        formControlName="addressline2"
+        placeholder="addressline2"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="addressline3">addressline3</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('addressline3') && isTouched('addressline3'),
+          'is-valid': !hasErrors('addressline3') && isTouched('addressline3')
+        }"
+        class="form-control form-control-lg"
+        formControlName="addressline3"
+        placeholder="addressline3"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="town">town</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('town') && isTouched('town'),
+          'is-valid': !hasErrors('town') && isTouched('town')
+        }"
+        class="form-control form-control-lg"
+        formControlName="town"
+        placeholder="town"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="city">city</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('city') && isTouched('city'),
+          'is-valid': !hasErrors('city') && isTouched('city')
+        }"
+        class="form-control form-control-lg"
+        formControlName="city"
+        placeholder="city"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="postcode">postcode</label>
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid': hasErrors('postcode') && isTouched('postcode'),
+          'is-valid': !hasErrors('postcode') && isTouched('postcode')
+        }"
+        class="form-control form-control-lg"
+        formControlName="postcode"
+        placeholder="postcode"
+      />
+
+      <div *ngIf="hasError('postcode', 'required')" class="invalid-feedback">
+        postcode is required
+      </div>
+    </div>
+
+    <button
+      class="btn bg-primary text-light mr-2"
+      [disabled]="!createAListingForm.valid"
+    >
+      Save
+    </button>
+  </form>
+</div>
