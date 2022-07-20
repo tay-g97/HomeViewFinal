@@ -1,9 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Property } from '../models/property/property.model';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { PropertyCreate } from '../models/property/property-create.model';
+import { Property } from '../models/property/property.model';
 import { PropertySearch } from '../models/property/property-search.model';
 
 @Injectable({
@@ -24,13 +24,23 @@ export class PropertyService {
       propertySearch
     );
   }
+  create(model: PropertyCreate): Observable<Property> {
+    return this.http.post<Property>(`${environment.webApi}/Property`, model);
+  }
 
-  // search(propertySearch: PropertySearch) {
-  //   return this.http.post<Property[]>(`${environment.webApi}/Property/search`, {
-  //     ['Location']: propertySearch.Location,
-  //     ['PropertyType']: propertySearch.PropertyType,
-  //     ['Keywords']: propertySearch.Keywords,
-  //     ['MinBed']: propertySearch.Location,
-  //   });
-  // }
+  getAll() {}
+
+  get(propertyId: number): Observable<Property> {
+    return this.http.get<Property>(
+      `${environment.webApi}/Property/${propertyId}`
+    );
+  }
+
+  getByApplicationUserId(userId: number): Observable<Property[]> {
+    return this.http.get<Property[]>(
+      `${environment.webApi}/Property/user/${userId}`
+    );
+  }
+
+  delete() {}
 }

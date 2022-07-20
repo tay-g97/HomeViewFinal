@@ -14,6 +14,17 @@ const routes: Routes = [
   { path: 'profile-photo', component: ProfilePhotoComponent },
   { path: 'profile-page', component: ProfilePageComponent },
   { path: 'property-search', component: PropertySearchComponent },
+  { path: 'help', component: HelpComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'create-a-listing',
+    component: CreateAListingComponent,
+  },
+  {
+    path: 'create-a-listing:id',
+    component: CreateAListingComponent,
+  },
 ];
 
 @NgModule({
