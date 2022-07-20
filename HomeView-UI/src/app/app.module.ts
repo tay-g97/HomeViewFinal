@@ -18,7 +18,10 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
-import { CarouselModule} from 'ngx-bootstrap/carousel';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { PropertySearchComponent } from './components/search/property-search/property-search.component';
+import { ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { CarouselModule} from 'ngx-bootstrap/carousel';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    ProfilePhotoComponent
+    ProfilePhotoComponent,
+    ProfilePageComponent,
+    PropertySearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,7 @@ import { CarouselModule} from 'ngx-bootstrap/carousel';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
   ],
   providers: [
     HttpClient,

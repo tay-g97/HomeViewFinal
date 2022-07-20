@@ -1,0 +1,116 @@
+<section class="section-profile-header">
+  <div class="outer-profile-flexbox">
+    <h1>My Profile</h1>
+    <div class="design-box">
+      <div class="inner-profile-flexbox">
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+          <div class="profile-input">
+            <div class="form">
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                formControlName="Username"
+                class="form_input form-control"
+                autocomplete="off"
+                input
+                placeholder="eg Jane Doe"
+              />
+            </div>
+            <div class="form">
+              <label for="addressline1">Address Line 1:</label>
+              <input
+                class="form_input form-control"
+                type="text"
+                formControlName="addressline1"
+                placeholder="123 Fake Street"
+              />
+            </div>
+            <div class="form">
+              <label for="addressline2">Address Line 2:</label>
+              <input
+                class="form_input form-control"
+                type="text"
+                formControlName="addressline2"
+              />
+            </div>
+            <div class="form">
+              <label for="addressline3">Address Line 3:</label>
+              <input
+                class="form_input form-control"
+                type="text"
+                formControlName="addressline3"
+              />
+            </div>
+            <div class="form">
+              <label for="postcode">Postcode:</label>
+              <input
+                class="form_input form-control"
+                type="text"
+                formControlName="postcode"
+                placeholder="ECV1 3SY"
+              />
+            </div>
+            <div class="form">
+              <label for="phonenumber">Phone Number:</label>
+              <input
+                class="form_input"
+                type="tel"
+                formControlName="phonenumber"
+                placeholder="07474836423"
+              />
+            </div>
+            <div class="form">
+              <label for="email">Email:</label>
+              <input
+                class="form_input"
+                type="email"
+                formControlName="email"
+                placeholder="janedoe@homeview.co.uk"
+              />
+            </div>
+
+            <div class="form form-updatepassword">
+              <label class="form-label" for="oldpass">Update Password:</label>
+              <div class="updatepassword">
+                <input
+                  class="form-field form-control form-control-lg"
+                  formControlName="oldpass"
+                  type="password"
+                  [ngClass]="{
+                    'is-invalid': hasErrors('oldpass') && isTouched('oldpass'),
+                    'is-valid': !hasErrors('oldpass') && isTouched('oldpass')
+                  }"
+                  placeholder="Old Password"
+                />
+                <div
+                  *ngIf="
+                    hasError('oldpass', 'minlength') ||
+                    hasError('oldpass', 'maxlength')
+                  "
+                  class="invalid-feedback"
+                >
+                  Must be between 10-50 characters
+                </div>
+                <input
+                  class="form_input"
+                  formControlName="newpass"
+                  type="password"
+                  placeholder="New Password"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="profile-img-btns">
+          <p>Profile Picture</p>
+          <img src="/img/silo.png" />
+          <button class="btn update-btn" type="button">
+            Update Profile Picture
+          </button>
+          <button class="btn save-btn" type="button">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

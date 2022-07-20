@@ -154,7 +154,7 @@ namespace HomeView.Web.Controllers
 
         }
 
-        [HttpGet("search")]
+        [HttpPost("search")]
         public async Task<ActionResult<List<Property>>> PropertySearch(PropertySearch propertySearch)
         {
             var propertyList = await _propertyRepository.SearchProperties(propertySearch);

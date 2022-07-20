@@ -1,0 +1,186 @@
+<body>
+  <section class="main-search">
+    <div class="outer-propertysearch-flexbox">
+      <h1>Search</h1>
+      <div class="design-box">
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+          <div class="inner-propertysearch-flexbox">
+            <div class="grid--3-cols-search search-input">
+              <div class="form">
+                <label for="location">Location:</label>
+                <input
+                  type="text"
+                  class="form_input"
+                  autocomplete="off"
+                  formControlName="location"
+                  placeholder=" e.g 'Westminster', 'London', 'NW1'"
+                />
+              </div>
+              <div class="form">
+                <label for="min-price">Min Price:</label>
+                <select name="min-price" formControlName="minPrice">
+                  <option value="1">£0</option>
+                  <option value="100000">£100k</option>
+                  <option value="250000">£250k</option>
+                  <option value="500000">£500k</option>
+                  <option value="750000">£750k</option>
+                  <option value="1000000">£1m</option>
+                  <option value="2000000">£2m</option>
+                  <option value="5000000">£5m</option>
+                  <option value="10000000">£10m</option>
+                  <option value="100000000">£10m+</option>
+                </select>
+              </div>
+              <div class="form">
+                <label for="max-price">Max Price:</label>
+                <select name="max-price" formControlName="maxPrice">
+                  <option value="99999">Under £100k</option>
+                  <option value="250000">£250k</option>
+                  <option value="500000">£500k</option>
+                  <option value="750000">£750k</option>
+                  <option value="1000000">£1m</option>
+                  <option value="2000000">£2m</option>
+                  <option value="5000000">£5m</option>
+                  <option value="10000000">£10m</option>
+                  <option selected="selected" value="100000000">£10m+</option>
+                </select>
+              </div>
+              <div class="form">
+                <label for="property-type">property type:</label>
+                <select
+                  formControlName="propertyType"
+                  class="form-field form-control"
+                >
+                  <option value="">any</option>
+                  <option value="flats">Flats</option>
+                  <option value="detached">Detached</option>
+                  <option value="semi-detached">Semi-detached</option>
+                  <option value="terraced">Teerraced</option>
+                  <option value="Bungalow">Bungalow</option>
+                </select>
+              </div>
+
+              <div class="form">
+                <label for="min-beds">Min beds:</label>
+                <select name="min-beds" type="number" formControlName="minBeds">
+                  <option selected="selected" value="1">1 bed</option>
+                  <option value="2">2 beds</option>
+                  <option value="3">3 beds</option>
+                  <option value="4">4 beds</option>
+                  <option value="5">5 beds</option>
+                  <option value="6">6 beds</option>
+                  <option value="7">7 beds</option>
+                  <option value="8">8 beds</option>
+                  <option value="9">9 beds</option>
+                </select>
+              </div>
+              <div class="form">
+                <label for="max-beds">Max beds:</label>
+                <select name="max-beds" type="number" formControlName="maxBeds">
+                  <option value="1">1 bed</option>
+                  <option value="2">2 beds</option>
+                  <option value="3">3 beds</option>
+                  <option value="4">4 beds</option>
+                  <option value="5">5 beds</option>
+                  <option value="6">6 beds</option>
+                  <option value="7">7 beds</option>
+                  <option value="8">8 beds</option>
+                  <option value="9">9 beds</option>
+                  <option selected="selected" value="1000">10+ beds</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-input">
+              <div class="form">
+                <label for="sort-by">Sort by:</label>
+                <select
+                  class="form-input mb-3"
+                  name="sort-by"
+                  formControlName="sort-by"
+                >
+                  <option value="recent">Most Recent</option>
+                  <option value="price-up">Price Ascending</option>
+                  <option value="price-down">Price Descending</option>
+                  <option value="proximity">Proximity</option>
+                </select>
+              </div>
+              <div class="form mb-3">
+                <label for="keywords">Keywords:</label>
+                <input
+                  class="form_input"
+                  [ngClass]="{
+                    'is-invalid':
+                      hasErrors('keywords') && isTouched('keywords'),
+                    'is-valid': !hasErrors('keywords') && isTouched('keywords')
+                  }"
+                  type="text"
+                  formControlName="keywords"
+                  placeholder="e.g.'Pool', 'Garden', 'Study'"
+                />
+                <div
+                  *ngIf="hasError('keywords', 'pattern')"
+                  class="invalid-feedback"
+                >
+                  invalid format
+                </div>
+              </div>
+
+              <button
+                class="btn search-btn mb-3"
+                [disabled]="!searchForm.valid"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <p class="results-text">
+        Your Property Search Returned
+        <span>{{ properties.length }}</span> Results
+      </p>
+      <ng-template [ngIf]="properties?.length > 0" [ngIfElse]="">
+        <div class="carousel">
+          <div
+            id="carousel1"
+            *ngFor="let property of properties"
+            class="carousel-property-card card-focussed"
+          >
+            <img
+              class="carousel-property-img"
+              src="assets/mainpropertyimgs/centralbirms.jpg"
+            />
+            <div class="carousel-property-card-content">
+              <p class="carousel-property-guide-price">guide price</p>
+              <p class="carousel-property-price">£{{ property.guideprice }}</p>
+              <p class="carousel-property-description">
+                {{ property.description }}
+              </p>
+              <p class="carousel-property-address">
+                {{ property.addressline1 }}, {{ property.city }},
+                {{ property.postcode }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <!-- <ng-template [ngIf]="properties.length >= 1">
+        <div class="container card-columns mt-5">
+          {{ propertySearch.propertyType }}
+          it worked
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="propertySearch.location">
+        <div class="container card-columns mt-5">
+          {{ propertySearch.propertyType }}
+          it worked
+        </div>
+      </ng-template>
+      {{ properties[0].guideprice }}
+      {{ propertySearch.location }} -->
+    </div>
+  </section>
+</body>

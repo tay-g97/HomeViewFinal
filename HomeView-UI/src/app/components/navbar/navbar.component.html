@@ -7,31 +7,44 @@
       <li><a class="nav-item" href="index.html">Home</a></li>
       <li><a class="nav-item" href="buyer.html">Buy</a></li>
       <li><a class="nav-item" href="seller.html">Sell</a></li>
+      <li>
+        <a class="nav-item" href="property-search">Search</a>
+      </li>
       <li><a class="nav-item" href="help.html">Help</a></li>
       <li><a class="nav-item" href="AboutUs.html">About Us</a></li>
     </ul>
     <div class="account-section">
       <ul class="account-options" *ngIf="!accountService.isLoggedIn()">
         <li class="nav-item">
-          <a class="account-option" routerLink='/login'>Login</a>
+          <a class="account-option" routerLink="/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="account-option" routerLink='/register'>Sign Up</a>
+          <a class="account-option" routerLink="/register">Sign Up</a>
         </li>
       </ul>
       <ul class="account-options" *ngIf="accountService.isLoggedIn()">
         <li class="nav-item">
-          <a class="account-option" routerLink="/">{{accountService.currentUserValue.username}}</a>
+          <a class="account-option" routerLink="/">{{
+            accountService.currentUserValue.username
+          }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-logout-option" (click)='logout()'>Logout</a>
+          <a class="nav-logout-option" (click)="logout()">Logout</a>
         </li>
       </ul>
-      <img class="avatar-pic" src="assets/nav-avatar.svg" *ngIf="!accountService.isLoggedIn()"/>
-      <img class="avatar-pic" [src]="photo.imageUrl" *ngIf="accountService.isLoggedIn()"/>
+      <img
+        class="avatar-pic"
+        src="assets/nav-avatar.svg"
+        *ngIf="!accountService.isLoggedIn()"
+      />
+      <img
+        class="avatar-pic"
+        [src]="photo.imageUrl"
+        *ngIf="accountService.isLoggedIn()"
+      />
     </div>
   </div>
-<!-- </header>
+  <!-- </header>
  <header class="header">
   <div class="header-content grid--3-cols head-foot-container">
     <a class="header-home-link" href="index.html">
@@ -98,3 +111,4 @@
     </div>
   </div>
 </header> -->
+</header>

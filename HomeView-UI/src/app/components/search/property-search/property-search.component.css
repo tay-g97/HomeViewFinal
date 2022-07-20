@@ -1,0 +1,313 @@
+.outer-propertysearch-flexbox {
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebf4f7;
+  height: 80rem;
+  justify-content: center;
+}
+
+h1 {
+  padding: 2rem 0;
+  font-size: 4.2rem;
+  text-align: center;
+}
+.results-text {
+  margin-bottom: 2rem;
+}
+
+.results-text span {
+  color: #087ca7;
+  font-weight: bolder;
+}
+.design-box {
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #033860;
+  height: 30%;
+  width: 60%;
+  border-radius: 10px;
+}
+
+.inner-propertysearch-flexbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 5rem;
+  height: 90%;
+  width: 97%;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #fc7753;
+}
+
+.search-input {
+  margin-top: 3rem;
+  width: 100%;
+  gap: 2rem;
+  display: flex;
+}
+
+.btn {
+  padding: 0px 10px 0px 10px;
+  box-shadow: 1px 5px 8px rgba(0, 0, 0, 0.05);
+  color: white;
+  border: 1px solid #29323d;
+  border-radius: 3px 3px 3px 3px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-align: center;
+  cursor: pointer;
+  width: 10.7rem;
+  transition: all 0.3sec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.search-btn {
+  margin-left: auto;
+  background: #087ca7;
+}
+.search-btn:hover,
+.search-btn:active {
+  background: #077096;
+}
+
+.clear-btn:hover,
+.clear-btn:active {
+  background: #077096;
+}
+.clear-btn {
+  background: none;
+  border: 2.5px solid #087ca7;
+}
+/***************************************/
+/*INPUT SECTION*/
+/**************************************/
+.grid--3-cols-search {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select {
+  display: inline-block;
+  width: 100%;
+  height: 3.6rem;
+  padding: 4px 8px 4px 8px;
+  color: black;
+  border: 1px solid #232323;
+  border-radius: 3px 3px 3px 3px;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+input[type="password"] {
+  margin: 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus {
+  background-color: white;
+  outline: none;
+}
+label {
+  color: white;
+  font-size: 1.4rem;
+}
+.updatepassword {
+  display: flex;
+  flex-direction: column;
+}
+
+.results-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.btn-icon-search {
+  font-size: 2rem;
+}
+/*************************/
+/*CAROUSEL RESULTS(NEEDS WORK
+/**************************/
+.carousel {
+  margin: 0 auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 0.25fr);
+  gap: 1.6rem;
+}
+
+.carousel-btn {
+  width: 3.6rem;
+  height: 3.6rem;
+  align-self: center;
+  justify-self: center;
+  border: none;
+  background-color: #087ca7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100px;
+}
+
+.carousel-btn-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.left-carousel-icon {
+  transform: translate(-10%, 0);
+}
+
+.right-carousel-icon {
+  transform: translate(10%, 0);
+}
+
+.carousel-btn,
+.carousel-btn:link,
+.carousel-btn:visited {
+  background-color: #087ca7;
+  cursor: pointer;
+}
+
+.carousel-btn,
+.carousel-btn:link,
+.carousel-btn:visited .carousel-btn-icon {
+  color: #ebf4f7;
+}
+
+.carousel-btn:hover,
+.carousel-btn:active {
+  background-color: #ebf4f7;
+  box-shadow: inset 0 0 0 3px #087ca7;
+}
+
+.carousel-btn:hover,
+.carousel-btn:active .carousel-btn-icon {
+  color: #087ca7;
+}
+
+.carousel-property-card {
+  background-color: #f4f9fb;
+  border-radius: 1rem;
+}
+
+.carousel-property-img {
+  width: 100%;
+  justify-self: center;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.carousel-property-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-property-details p {
+  font-size: 1.2rem;
+}
+
+.carousel-property-address {
+  font-size: 0.8rem;
+}
+
+.carousel-property-tags {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.carousel-property-tag {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.4rem 1.6rem;
+  border-radius: 0.8rem;
+}
+
+.tag-popular {
+  background-color: #033860;
+  color: #fc7753;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.tag-new {
+  background-color: #fc7753;
+  color: #ebf4f7;
+}
+
+.carousel-property-guide-price {
+  margin-top: 1.6rem;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+
+.carousel-property-price {
+  margin-top: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.carousel-icon-section {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.icon-set {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.carousel-icon {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.carousel-property-description {
+  margin-top: 1.2rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.carousel-property-address {
+  margin-top: 0.8rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.carousel-property-card-content {
+  padding: 0.4rem 0 3.2rem 1.6rem;
+}
+
+/************************************/
+/*FORM SECTION*/
+/************************************/
+.form {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
