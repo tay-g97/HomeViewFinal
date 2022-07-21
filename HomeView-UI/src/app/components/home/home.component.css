@@ -1,0 +1,123 @@
+/* Login Page */
+
+.section-login-header {
+  padding: 2.4rem 0;
+}
+
+.section-main-login {
+  padding: 1.2rem 0;
+}
+.login-split-form {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  align-items: center;
+}
+
+.login-login-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-login-section-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.25fr 0.25fr 0.25fr;
+  justify-items: center;
+  gap: 3.2rem;
+}
+
+.login-fields-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-logo {
+  height: 6.4rem;
+  object-fit: contain;
+}
+
+.login-signup-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr;
+  justify-items: center;
+  row-gap: 4.8rem;
+}
+
+.login-signup-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.container {
+  max-width: 100rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.section-container {
+  margin: 0 2.4rem 0 2.4rem;
+}
+
+.cta-btn,
+.cta-btn:link,
+.cta-btn:visited {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1.4rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 4.8rem rgba(0, 0, 0, 0.1);
+}
+
+.cta-btns {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.create-listing-form-container {
+  padding: 2.4rem;
+  border: solid 2px #fc7753;
+  background-color: #033860;
+  border-radius: 14px;
+}
+
+.create-listing-form-outer {
+  background-color: #033860;
+  padding: 1.2rem;
+  border-radius: 14px;
+  margin: 0 2.4rem 0 2.4rem;
+}
+
+.material-icons-login {
+  color: #fc7753;
+  font-size: 5.2rem;
+}
+
+.forgot-password-text {
+  width: 37.6rem;
+  height: 4.4rem;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.register-now-text {
+  width: 37.6rem;
+  height: 4.4rem;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: center;
+}
